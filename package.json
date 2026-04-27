@@ -1,0 +1,61 @@
+{
+  "name": "sinky-todo-qa",
+  "version": "1.0.0",
+  "description": "Smart To-Do List - QA Test Suite & CI/CD",
+  "private": true,
+  "scripts": {
+    "test": "npm run test:api && npm run test:e2e",
+    "test:api": "cd api && npm run test:api",
+    "test:e2e": "cd e2e && npm run test:e2e",
+    "test:unit": "npm run test:unit:backend && npm run test:unit:frontend",
+    "test:unit:backend": "cd app/backend && npm run test",
+    "test:unit:frontend": "cd app/frontend && npm run test",
+    "type-check": "npm run type-check:backend && npm run type-check:frontend && npm run type-check:e2e",
+    "type-check:backend": "cd app/backend && tsc --noEmit",
+    "type-check:frontend": "cd app/frontend && tsc --noEmit",
+    "type-check:e2e": "cd e2e && tsc --noEmit",
+    "lint": "npm run lint:backend && npm run lint:frontend && npm run lint:e2e",
+    "lint:backend": "cd app/backend && npm run lint || true",
+    "lint:frontend": "cd app/frontend && npm run lint || true",
+    "lint:e2e": "cd e2e && npm run lint || true",
+    "format": "npm run format:backend && npm run format:frontend && npm run format:e2e",
+    "format:backend": "cd app/backend && npm run format || true",
+    "format:frontend": "cd app/frontend && npm run format || true",
+    "format:e2e": "cd e2e && npm run format || true",
+    "audit": "npm audit --recursive",
+    "audit:fix": "npm audit fix --recursive",
+    "dev": "cd app && docker-compose up",
+    "dev:down": "cd app && docker-compose down",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd app/backend && npm run build",
+    "build:frontend": "cd app/frontend && npm run build",
+    "ci": "npm run type-check && npm run lint && npm run test",
+    "pre-commit": "npm run type-check:e2e && npm run test:api"
+  },
+  "keywords": [
+    "testing",
+    "qa",
+    "playwright",
+    "e2e",
+    "api-contract",
+    "ci-cd"
+  ],
+  "author": "QA Engineer - Sinky",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "workspaces": [
+    "api",
+    "app/backend",
+    "app/frontend",
+    "e2e"
+  ],
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}

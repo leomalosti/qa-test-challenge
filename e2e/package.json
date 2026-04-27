@@ -1,0 +1,35 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test tests/api-contract.spec.ts",
+    "test:e2e": "playwright test tests/frontend-e2e.spec.ts",
+    "test:empty": "playwright test tests/empty-stage.spec.ts",
+    "test:creation": "playwright test tests/task-creation.spec.ts",
+    "test:completion": "playwright test tests/task-completion.spec.ts",
+    "test:deletion": "playwright test tests/task-deletion.spec.ts",
+    "test:errors": "playwright test tests/error-handling.spec.ts",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report",
+    "lint": "tsc --noEmit",
+    "format": "prettier --write 'tests/**/*.ts'",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.4.22"
+  }
+}
